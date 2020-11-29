@@ -30,7 +30,7 @@ extern "C" {
 	bool add_node(list* l, int key, const char* value);
 
 	// ノードのprev要素の次への追加
-	void indert_next(list* l, node* p, node* prev);
+	void insert_next(list* l, node* p, node* prev);
 	// ノードのリストからの削除
 	void remove_node(list* l, node* p);
 
