@@ -22,10 +22,10 @@ jobs:
         with:
           vswhere-path: 'C:\Program Files (x86)\Microsoft Visual Studio\Installer'  
       
-      - name: RUn MSBuild
+      - name: Run MSBuild
         working-directory: src
         continue-on-error: true
-        run: msbuild src.sln -p:OutDir="out/" -m
+        run: msbuild src.sln -m
           
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v4
