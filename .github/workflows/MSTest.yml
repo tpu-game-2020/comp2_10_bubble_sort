@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    name: Run MSBuild and VSTest
+    name: MSBuild and VSTest
 
     steps:
       - name: Checkout code

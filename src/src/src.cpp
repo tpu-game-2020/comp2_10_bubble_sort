@@ -12,7 +12,7 @@ int main()
 
     bubble_sort(&list);
 
-    for (node* p = list.root; p != NULL; p = p->next) {
+    for (node* p = list.head; p != NULL; p = p->next) {
         printf("%s ", p->value);
     }
     printf("\n");

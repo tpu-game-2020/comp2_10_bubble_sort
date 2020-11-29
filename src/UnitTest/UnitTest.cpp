@@ -34,7 +34,7 @@ namespace UnitTest
 			bubble_sort(&l);
 
 			// 結果の検証
-			Assert::AreEqual("hello world!", l.root->value);
+			Assert::AreEqual("hello world!", l.head->value);
 
 			// 片付け
 			finalize(&l);
@@ -48,20 +48,19 @@ namespace UnitTest
 			// 初期化
 			initialize(&l);
 
-			add_node(&l, 2, "world!");
-			add_node(&l, 1, "hello");
+			add_node(&l, 1, "hello");	// head = 1 = tail
+			add_node(&l, 2, "world!");	// head = 2 -> 1 = tail
 
 			// ソート
 			bubble_sort(&l);
 
 			// 結果の検証
 			int i = 0;
-			for (node* p = l.root; p != NULL; p = p->next) {
+			for (node* p = l.head; p != NULL; p = p->next) {
 				const static char* expected[] = {
 					"hello" ,
 					"world!" };
-				Assert::AreEqual(expected[i], l.root->value);
-				i++;
+				Assert::AreEqual(expected[i++], p->value);
 			}
 			Assert::AreEqual(2, i);// 要素が2個で来ているはず
 
@@ -77,22 +76,21 @@ namespace UnitTest
 			// 初期化
 			initialize(&l);
 
-			add_node(&l, 2, "world");
-			add_node(&l, 3, "!");
-			add_node(&l, 1, "hello");
+			add_node(&l, 1, "hello");	// head = 1 = tail
+			add_node(&l, 2, "world");	// head = 2 -> 1 = tail
+			add_node(&l, 3, "!");		// head = 3 -> 2 -> 1 = tail
 
 			// ソート
 			bubble_sort(&l);
 
 			// 結果の検証
 			int i = 0;
-			for (node* p = l.root; p != NULL; p = p->next) {
+			for (node* p = l.head; p != NULL; p = p->next) {
 				const static char* expected[] = {
 					"hello" ,
 					"world",
 					"!"};
-			Assert::AreEqual(expected[i], l.root->value);
-				i++;
+			Assert::AreEqual(expected[i++], p->value);
 			}
 			Assert::AreEqual(3, i);// 要素が3個で来ているはず
 

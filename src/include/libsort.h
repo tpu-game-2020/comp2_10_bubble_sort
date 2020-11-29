@@ -9,23 +9,30 @@ extern "C" {
 		int key;
 		char value[256];
 		struct node* next;
+		struct node* prev;
 	}node;
 
 	typedef struct list {
-		node* root;
+		node* head;
+		node* tail;
 	}list;
 
 	// ソート
 	void bubble_sort(list* l);
 
 	// リストの初期化
-	void initialize(list* t);
+	void initialize(list* l);
 
 	// 使用メモリの全解放
-	void finalize(list* t);
+	void finalize(list* l);
 
 	// keyの値を見てノードを追加する
-	bool add_node(list* t, int key, const char* value);
+	bool add_node(list* l, int key, const char* value);
+
+	// ノードのprev要素の次への追加
+	void indert_next(list* l, node* p, node* prev);
+	// ノードのリストからの削除
+	void remove_node(list* l, node* p);
 
 
 
