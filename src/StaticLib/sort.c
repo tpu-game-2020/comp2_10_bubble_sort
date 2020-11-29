@@ -65,17 +65,24 @@ bool add_node(list* t, int key, const char* value)
 //
 // ノードのprev要素の次への追加
 //
-void indert_next(list* l, node* p, node* prev)
+void insert_next(list* l, node* p, node* prev)
 {
-	p->prev = prev;
-	if (prev) {
-		p->next = prev->next;
-		prev->next = p;
-	}
-	else {
-		p->next = NULL;
-		l->head = p;
-	}
+    p->prev = prev;
+    if (prev) {
+        p->next = prev->next;
+        if (prev->next) {
+            prev->next->prev = p;
+        }
+        else {
+            l->tail = p;
+        }
+        prev->next = p;
+    }
+    else {
+        p->next = NULL;
+        l->tail = p;
+        l->head = p;
+    }
 }
 
 
