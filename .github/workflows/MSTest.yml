@@ -1,0 +1,35 @@
+name: UnitTest
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Dependency - MSBuild
+        uses: microsoft/setup-msbuild@v1.0.2
+        with:
+          vswhere-path: 'C:\Program Files (x86)\Microsoft Visual Studio\Installer'  
+      
+      - name: MSBuild
+        working-directory: src
+        continue-on-error: true
+        run: |
+          msbuild src.sln -p:OutDir="out/" -m
+          
+      - name: Setup VSTest.exe
+        uses: Malcolmnixon/Setup-VSTest@v4
+
+      - name: VSTest
+        run: vstest.console src/x64/Debug/UnitTest.dll
+
+# this script is written based on https://github.com/Malcolmnixon/Setup-VSTest under the MIT license.
