@@ -11,20 +11,21 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    name: Run MSBuild and VSTest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2.1.0
 
-      - name: Dependency - MSBuild
+      - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.2
         with:
           vswhere-path: 'C:\Program Files (x86)\Microsoft Visual Studio\Installer'  
       
-      - name: MSBuild
+      - name: RUn MSBuild
         working-directory: src
         continue-on-error: true
-        run: |
-          msbuild src.sln -p:OutDir="out/" -m
+        run: msbuild src.sln -p:OutDir="out/" -m
           
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v4
