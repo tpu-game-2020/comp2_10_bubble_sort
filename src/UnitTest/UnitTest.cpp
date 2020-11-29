@@ -23,79 +23,69 @@ namespace UnitTest
 		// 一つだけの場合を検証する
 		TEST_METHOD(TestMethod1)
 		{
-			list l;
-
 			// 初期化
-			initialize(&l);
+			array* a = create(1);
 
-			add_node(&l, 1, "hello world!");
+			a->nodes[0].key = 1; strcpy_s(a->nodes[0].value, 256, "hello world!");
 
 			// ソート
-			bubble_sort(&l);
+			bubble_sort(a);
 
 			// 結果の検証
-			Assert::AreEqual("hello world!", l.head->value);
+			Assert::AreEqual("hello world!", a->nodes[0].value);
 
 			// 片付け
-			finalize(&l);
+			finalize(a);
 		}
 
 		// 2つの場合を検証する
 		TEST_METHOD(TestMethod2)
 		{
-			list l;
-
 			// 初期化
-			initialize(&l);
+			array* a = create(2);
 
-			add_node(&l, 1, "hello");	// head = 1 = tail
-			add_node(&l, 2, "world!");	// head = 2 -> 1 = tail
+			a->nodes[0].key = 2; strcpy_s(a->nodes[0].value, 256, "world!");
+			a->nodes[1].key = 1; strcpy_s(a->nodes[1].value, 256, "hello");
 
 			// ソート
-			bubble_sort(&l);
+			bubble_sort(a);
 
 			// 結果の検証
-			int i = 0;
-			for (node* p = l.head; p != NULL; p = p->next) {
+			for (int i = 0; i < a->num; i++) {
 				const static char* expected[] = {
 					"hello" ,
 					"world!" };
-				Assert::AreEqual(expected[i++], p->value);
+				Assert::AreEqual(expected[i], a->nodes[i].value);
 			}
-			Assert::AreEqual(2, i);// 要素が2個で来ているはず
 
 			// 片付け
-			finalize(&l);
+			finalize(a);
 		}
 
 		// 3つの場合を検証する
 		TEST_METHOD(TestMethod3)
 		{
-			list l;
-
 			// 初期化
-			initialize(&l);
+			array* a = create(3);
 
-			add_node(&l, 1, "hello");	// head = 1 = tail
-			add_node(&l, 2, "world");	// head = 2 -> 1 = tail
-			add_node(&l, 3, "!");		// head = 3 -> 2 -> 1 = tail
+			a->nodes[0].key = 3; strcpy_s(a->nodes[0].value, 256, "!");
+			a->nodes[1].key = 2; strcpy_s(a->nodes[1].value, 256, "world");
+			a->nodes[2].key = 1; strcpy_s(a->nodes[2].value, 256, "hello");
 
 			// ソート
-			bubble_sort(&l);
+			bubble_sort(a);
 
 			// 結果の検証
-			int i = 0;
-			for (node* p = l.head; p != NULL; p = p->next) {
+			for (int i = 0; i < a->num; i++) {
 				const static char* expected[] = {
 					"hello" ,
 					"world",
-					"!"};
-			Assert::AreEqual(expected[i++], p->value);
+					"!" };
+				Assert::AreEqual(expected[i], a->nodes[i].value);
 			}
-			Assert::AreEqual(3, i);// 要素が3個で来ているはず
 
 			// 片付け
-			finalize(&l);
+			finalize(a);
 		}
 	};
 }

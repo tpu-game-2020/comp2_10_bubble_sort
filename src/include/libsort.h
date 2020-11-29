@@ -8,32 +8,21 @@ extern "C" {
 	typedef struct node {
 		int key;
 		char value[256];
-		struct node* next;
-		struct node* prev;
 	}node;
 
-	typedef struct list {
-		node* head;
-		node* tail;
-	}list;
+	typedef struct array {
+		int    num;
+		node*  nodes;
+	}array;
 
-	// ソート
-	void bubble_sort(list* l);
-
-	// リストの初期化
-	void initialize(list* l);
+	// 配列の初期化
+	array *create(int num);
 
 	// 使用メモリの全解放
-	void finalize(list* l);
+	void finalize(array* a);
 
-	// keyの値を見てノードを追加する
-	bool add_node(list* l, int key, const char* value);
-
-	// ノードのprev要素の次への追加
-	void insert_next(list* l, node* p, node* prev);
-	// ノードのリストからの削除
-	void remove_node(list* l, node* p);
-
+	// ソート
+	void bubble_sort(array* a);
 
 
 	// C++ でCのライブラリを使うときのおまじない
