@@ -8,7 +8,7 @@
 
 [![Actions Status](https://github.com/rakugakirin/comp2_10_bubble_sort/workflows/MSTest/badge.svg)](https://github.com/rakugakirin/comp2_10_bubble_sort/actions)　
 
-（このファイルの上の行の[tpu-game-2020]の部分(2か所)を自分のアカウント名に修正してください）
+
 
 
 # 進め方
