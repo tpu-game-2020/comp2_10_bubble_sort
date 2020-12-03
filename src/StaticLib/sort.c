@@ -7,7 +7,20 @@
 void bubble_sort(array* a)
 {
 	// ToDo: 実装してください
-	a->nodes = NULL;
+	for (int j = 0; j < a->num; j++)
+	{
+		for (int i = a->num - 1; i > j; i--)
+		{
+			if (a->nodes[i].key < a->nodes[i - 1].key)
+			{
+				node tmp = a->nodes[i];
+
+				a->nodes[i] = a->nodes[i - 1];
+				a->nodes[i - 1] = tmp;
+				tmp = a->nodes[i];
+			}
+		}
+	}
 }
 
 
