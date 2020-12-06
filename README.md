@@ -6,9 +6,7 @@
 実装して、ユニットテストが通るようにしてください。
 
 
-[![Actions Status](https://github.com/tpu-game-2020/comp2_10_bubble_sort/workflows/MSTest/badge.svg)](https://github.com/tpu-game-2020/comp2_10_bubble_sort/actions)　
-
-（このファイルの上の行の[tpu-game-2020]の部分(2か所)を自分のアカウント名に修正してください）
+[![Actions Status](https://github.com/HosakaKota/comp2_10_bubble_sort/workflows/MSTest/badge.svg)](https://github.com/HosakaKota/comp2_10_bubble_sort/actions)　
 
 
 # 進め方
