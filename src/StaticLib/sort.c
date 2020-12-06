@@ -6,8 +6,18 @@
 // ソート
 void bubble_sort(array* a)
 {
-	// ToDo: 実装してください
-	a->nodes = NULL;
+	for (int i = 0; i <= a - 1; i++)
+	{
+		for (int j = a->num - j; i > 0; j--)
+		{
+			if (a->nodes[j - 1].key > a->nodes[j].key)
+			{
+				node temp = a->nodes[j];
+				a->nodes[j] = a->nodes[j - 1];
+				a->nodes[j - 1] = temp;
+			}
+		}
+	}
 }
 
 
