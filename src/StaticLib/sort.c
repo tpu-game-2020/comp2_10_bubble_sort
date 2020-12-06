@@ -8,7 +8,7 @@ void bubble_sort(array* a)
 {
 	for (int i = 0; i <= a - 1; i++)
 	{
-		for (int j = a->num - j; i > 0; j--)
+		for (int j = a->num - 1; i > 0; j--)
 		{
 			if (a->nodes[j - 1].key > a->nodes[j].key)
 			{
