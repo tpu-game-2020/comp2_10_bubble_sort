@@ -6,8 +6,8 @@
 // ソート
 void bubble_sort(array* a)
 {
-	// ToDo: 実装してください
-	a->nodes = NULL;
+	
+	
 }
 
 
